@@ -1,6 +1,6 @@
 PyAutoGUI
 pynput
-tk
+ttkthemes
 
 # To install these dependencies, run:
 # pip install -r requirements.txt

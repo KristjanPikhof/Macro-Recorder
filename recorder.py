@@ -34,7 +34,7 @@ class Recorder:
         if self.is_recording:
             try:
                 self.record_event("key", key.char)
-            except AttributeError:  # Special keys like Ctrl, Shift, etc.
+            except AttributeError:
                 self.record_event("key", str(key))
 
     def record_event(self, event_type, *args, **kwargs):

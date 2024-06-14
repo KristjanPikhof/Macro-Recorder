@@ -1,0 +1,6 @@
+PyAutoGUI
+pynput
+tk
+
+# To install these dependencies, run:
+# pip install -r requirements.txt

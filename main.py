@@ -1,6 +1,6 @@
 import threading
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, filedialog, messagebox, font
 import webbrowser
 import os
 import sys
@@ -35,8 +35,7 @@ class App(ThemedTk):
         self.style = ThemedStyle(self)
         # print(self.style.theme_names())  # Print available themes
         self.style.set_theme("yaru")
-        self.style.configure('TLabel', background='#f5f6f8')
-        self.style.configure('My.TLabel', background='#f5f6f8')  # Custom style to be used
+        self.style.configure('My.TLabel', background='#f5f6f8')
 
         self.recorder = Recorder()
         self.playback_manager = PlaybackManager()
@@ -60,6 +59,8 @@ class App(ThemedTk):
     def init_ui(self):
         control_frame = ttk.Frame(self)
         control_frame.pack(pady=10)
+
+        text_font = font.Font(family="Roboto", size=12, underline=False)
 
         self.record_button = ttk.Button(control_frame, text="⏺ Start Recording", command=self.toggle_recording)
         self.record_button.grid(row=0, column=1, padx=5, pady=5)
@@ -92,14 +93,14 @@ class App(ThemedTk):
         list_frame.grid_columnconfigure(0, weight=1)
         list_frame.grid_columnconfigure(1, weight=1)
 
-        self.left_list = tk.Listbox(list_frame, bg="#1e1e1e", fg="#ffffff", selectbackground="#3c3f41", selectforeground="#ffffff", font=("Helvetica", 12)) 
+        self.left_list = tk.Listbox(list_frame, bg="#1e1e1e", fg="#ffffff", selectbackground="#3c3f41", selectforeground="#ffffff", font=text_font)
         self.left_list.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
 
-        self.right_list = tk.Listbox(list_frame, bg="#1e1e1e", fg="#ffffff", selectbackground="#3c3f41", selectforeground="#ffffff", font=("Helvetica", 12)) 
+        self.right_list = tk.Listbox(list_frame, bg="#1e1e1e", fg="#ffffff", selectbackground="#3c3f41", selectforeground="#ffffff", font=text_font) 
         self.right_list.grid(row=0, column=1, padx=5, pady=5, sticky="nsew")
 
         # Configuring status label to use the same background color
-        self.status_label = tk.Label(self, text=status("Idle"), bg='#f5f6f8', font=("Helvetica", 12))
+        self.status_label = tk.Label(self, text=status("Idle"), bg='#f5f6f8')
         self.status_label.pack(pady=10)
 
         # Menubar setup
